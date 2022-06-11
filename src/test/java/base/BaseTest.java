@@ -41,6 +41,10 @@ public class BaseTest {
         return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(selector));
     }
 
+    public void wait_for_element_disappears(By selector){
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(selector));
+    }
+
     public boolean element_exists(By selector){
         try{
             wait.until(ExpectedConditions.elementToBeClickable(selector));
