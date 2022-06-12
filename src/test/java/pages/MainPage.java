@@ -14,7 +14,6 @@ public class MainPage {
     static By OPENED_MINI_CARD = By.cssSelector(".sideMenu--open");
 
     public static void open_website(String url){
-        BaseTest.setDriver();
         BaseTest.navigate_to(url);
     }
 

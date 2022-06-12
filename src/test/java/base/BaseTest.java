@@ -71,15 +71,6 @@ public class BaseTest {
         }
     }
 
-    public static void hover_element(WebElement element){
-        try {
-            actions.moveToElement(wait.until(ExpectedConditions.elementToBeClickable(element))).perform();
-        }
-        catch (MoveTargetOutOfBoundsException exception){
-            System.out.println("MoveTargetOutOfBoundsException but keep going");
-        }
-    }
-
     public static void scroll_to(By selector){
         try {
             actions.scrollToElement(wait.until(ExpectedConditions.presenceOfElementLocated(selector))).perform();
