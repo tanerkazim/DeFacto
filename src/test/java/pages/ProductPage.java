@@ -3,7 +3,6 @@ package pages;
 import base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +24,7 @@ public class ProductPage {
     public static void select_random_size(){
         BaseTest.scroll_to(PRODUCT_OPTIONS);
         List<WebElement> product_sizes = BaseTest.wait_for_all_elements(AVAILABLE_PRODUCT_SIZE);
-        int random_size_number = BaseTest.random_number(1, product_sizes.size());
+        int random_size_number = BaseTest.random_number(0, product_sizes.size());
         //BaseTest.scroll_to_web_element(product_sizes.get(random_size_number));
         product_sizes.get(random_size_number).click();
     }

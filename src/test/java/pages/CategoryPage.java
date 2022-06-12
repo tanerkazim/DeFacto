@@ -40,7 +40,7 @@ public class CategoryPage {
 
     public static void go_to_random_product(){
         List<WebElement> products = BaseTest.wait_for_all_elements(CATALOG_PRODUCTS);
-        int random_product_number = BaseTest.random_number(1, products.size());
+        int random_product_number = BaseTest.random_number(0, products.size());
         BaseTest.scroll_to_web_element(products.get(random_product_number));
         //List<WebElement> product_title = BaseTest.wait_for_all_elements(CATALOG_PRODUCTS);
         BaseTest.wait_for_web_element(products.get(random_product_number)).click();

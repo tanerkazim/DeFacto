@@ -10,6 +10,8 @@ import io.cucumber.java.en.When;
 import io.cucumber.junit.Cucumber;
 import org.junit.runner.RunWith;
 import static org.junit.Assert.*;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import pages.CartPage;
 import pages.CategoryPage;
 import pages.MainPage;
@@ -19,21 +21,27 @@ import java.util.List;
 @RunWith(Cucumber.class)
 public class SimpleHappyPathTest {
 
+    public static Logger log;
     List<String> product_page_data;
 
     @Before
-    public void setUpChrome(){
+    public void setUp(){
+        System.setProperty("log4j.configurationFile","log4j2-test.xml");
+        log = LogManager.getLogger(SimpleHappyPathTest.class);
         BaseTest.setDriver();
+        log.info("SetUP completed successfully!");
     }
 
     @Given("www.defacto.com.tr adresine gidilir.")
     public void openHomePage() {
         MainPage.open_website("https://www.defacto.com.tr/");
+        log.info("Home page opened.");
     }
 
     @Then("Ekranın yüklendiğine dair kontrol yapılır.")
     public void checkHomePageLoaded() {
         MainPage.check();
+        log.info("Home page loaded successfully!");
     }
 
     @When("Ana sayfada üstte yer alan menülerden KADIN sekmesinin üzerine gelinir.")
