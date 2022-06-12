@@ -11,6 +11,7 @@ public class MainPage {
     static By GO_TO_CART_BTN = By.cssSelector("[class*='go-to-cart--button']");
     static By HEADER_CONTAINER = By.className("header__container");
     static By TOAST_MESSAGE_BOX = By.cssSelector(".toast-right");
+    static By OPENED_MINI_CARD = By.cssSelector(".sideMenu--open");
 
     public static void open_website(String url){
         BaseTest.setDriver();
@@ -38,6 +39,10 @@ public class MainPage {
 
     public static void open_mini_cart(){
         BaseTest.wait_for_element(MINI_CART_BTN).click();
+    }
+
+    public static boolean is_mini_cart_opened(){
+        return BaseTest.element_exists(OPENED_MINI_CARD);
     }
 
     public static void go_to_cart(){

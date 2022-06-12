@@ -123,6 +123,11 @@ public class BaseTest {
     }
 
     public static void tear_down(){
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         driver.quit();
     }
 
