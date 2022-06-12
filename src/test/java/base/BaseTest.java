@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.interactions.MoveTargetOutOfBoundsException;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.time.Duration;
 import java.util.List;
@@ -40,6 +41,10 @@ public class BaseTest {
         return wait.until(ExpectedConditions.elementToBeClickable(selector));
     }
 
+    public static WebElement wait_for_web_element(WebElement element){
+        return wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
     public static List<WebElement> wait_for_all_elements(By selector){
         return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(selector));
     }
@@ -49,12 +54,59 @@ public class BaseTest {
     }
 
     public static void hover(By selector){
-        actions.moveToElement(wait.until(ExpectedConditions.elementToBeClickable(selector))).perform();
+        try {
+            actions.moveToElement(wait.until(ExpectedConditions.elementToBeClickable(selector))).perform();
+        }
+        catch (MoveTargetOutOfBoundsException exception){
+            System.out.println("MoveTargetOutOfBoundsException but keep going");
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static void hover_element(WebElement element){
+        try {
+            actions.moveToElement(wait.until(ExpectedConditions.elementToBeClickable(element))).perform();
+        }
+        catch (MoveTargetOutOfBoundsException exception){
+            System.out.println("MoveTargetOutOfBoundsException but keep going");
+        }
+    }
+
+    public static void scroll_to(By selector){
+        try {
+            actions.scrollToElement(wait.until(ExpectedConditions.presenceOfElementLocated(selector))).perform();
+        }
+        catch (MoveTargetOutOfBoundsException exception){
+            System.out.println("MoveTargetOutOfBoundsException but keep going");
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static void scroll_to_web_element(WebElement element){
+        try {
+            actions.scrollToElement(element).perform();
+        }
+        catch (MoveTargetOutOfBoundsException exception){
+            System.out.println("MoveTargetOutOfBoundsException but keep going");
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public static boolean element_exists(By selector){
         try{
-            wait.until(ExpectedConditions.elementToBeClickable(selector));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(selector));
             return true;
         }
         catch (TimeoutException exception){

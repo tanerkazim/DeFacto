@@ -7,7 +7,7 @@ public class CartPage {
 
     static By CART_CONTAINER = By.id("ContainerShoppingCart");
     static By SHOPPING_ACCORDION = By.cssSelector(".shopping__accordion");
-    static By PRODUCT_CARD = By.className("shopping__card ");
+    static By PRODUCT_CARD = By.className("shopping__card");
     static By DELETE_PRODUCT = By.cssSelector(".product-delete-item");
     static By CONFIRM_DELETE = By.cssSelector("#productDeleteModal .delete-button");
     static By EMPTY_CART_TEMPLATE = By.className("shopping__empty");
