@@ -25,13 +25,11 @@ public class ProductPage {
         BaseTest.scroll_to(PRODUCT_OPTIONS);
         List<WebElement> product_sizes = BaseTest.wait_for_all_elements(AVAILABLE_PRODUCT_SIZE);
         int random_size_number = BaseTest.random_number(0, product_sizes.size());
-        //BaseTest.scroll_to_web_element(product_sizes.get(random_size_number));
         product_sizes.get(random_size_number).click();
     }
 
     public static void add_to_cart(){
         BaseTest.scroll_to(PRODUCT_OPTIONS);
-        //BaseTest.hover(ADD_TO_CART_BTN);
         BaseTest.wait_for_element(ADD_TO_CART_BTN).click();
     }
 

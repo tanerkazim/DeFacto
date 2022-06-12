@@ -62,7 +62,6 @@ public class BaseTest {
             actions.moveToElement(wait.until(ExpectedConditions.elementToBeClickable(selector))).perform();
         }
         catch (MoveTargetOutOfBoundsException exception){
-            System.out.println("MoveTargetOutOfBoundsException but keep going");
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {
@@ -76,7 +75,6 @@ public class BaseTest {
             actions.scrollToElement(wait.until(ExpectedConditions.presenceOfElementLocated(selector))).perform();
         }
         catch (MoveTargetOutOfBoundsException exception){
-            System.out.println("MoveTargetOutOfBoundsException but keep going");
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {
@@ -90,7 +88,6 @@ public class BaseTest {
             actions.scrollToElement(element).perform();
         }
         catch (MoveTargetOutOfBoundsException exception){
-            System.out.println("MoveTargetOutOfBoundsException but keep going");
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {
