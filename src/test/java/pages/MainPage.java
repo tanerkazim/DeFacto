@@ -32,6 +32,7 @@ public class MainPage {
     }
 
     public static void wait_toast_message_disappears(){
+        BaseTest.wait_for_element(TOAST_MESSAGE_BOX);
         BaseTest.wait_for_element_disappears(TOAST_MESSAGE_BOX);
     }
 

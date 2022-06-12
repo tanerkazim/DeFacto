@@ -12,7 +12,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.interactions.MoveTargetOutOfBoundsException;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.time.Duration;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 public class BaseTest {
@@ -26,7 +28,9 @@ public class BaseTest {
 
         WebDriverManager.chromedriver().setup();
         ChromeOptions chrome_options = new ChromeOptions();
-        //chrome_options.setExperimentalOption("profile.default_content_setting_values.notifications",2);
+        Map<String, Object> prefs = new HashMap<>();
+        prefs.put("profile.default_content_setting_values.notifications", 2);
+        chrome_options.setExperimentalOption("prefs", prefs);
         driver = new ChromeDriver(chrome_options);
         actions = new Actions(driver);
         wait = new WebDriverWait(driver, Duration.ofSeconds(30));
